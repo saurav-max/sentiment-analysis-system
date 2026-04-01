@@ -1,130 +1,70 @@
+# Getting Started with Create React App
 
-# Sentiment Analysis System
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-A full-stack sentiment analysis system built with three independent services that work together in real time.
+## Available Scripts
 
----
+In the project directory, you can run:
 
-## Architecture Overview
-# Sentiment Analysis System
+### `npm start`
 
-A full-stack sentiment analysis system built with three independent services that work together in real time.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
----
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## Architecture Overview
-```
-React Frontend  →  Spring Boot Backend  →  ML Pipeline (Python)
-                        ↕                        ↕
-                      Kafka                    Redis
-```
+### `npm test`
 
----
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Services
+### `npm run build`
 
-### 1. `frontend/` — React
-- User interface for submitting text and viewing sentiment results
-- Communicates with the Spring Boot backend via REST API
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### 2. `backend/` — Spring Boot (Java)
-- REST API that receives text from the frontend
-- Publishes messages to Kafka for async processing
-- Caches results in Redis to avoid redundant ML calls
-- Fetches sentiment results and returns them to the frontend
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### 3. `ml-pipeline/` — Python
-- Consumes messages from Kafka
-- Runs sentiment analysis on the text (positive / negative / neutral)
-- Stores results back in Redis
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
----
+### `npm run eject`
 
-## Tech Stack
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-| Layer       | Technology              |
-|-------------|-------------------------|
-| Frontend    | React                   |
-| Backend     | Spring Boot (Java)      |
-| ML Service  | Python (FastAPI/Flask)  |
-| Message Bus | Apache Kafka            |
-| Cache       | Redis                   |
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
----
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-## Prerequisites
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-Before running this project, make sure the following are installed on your system:
+## Learn More
 
-- Java 17+
-- Node.js 18+
-- Python 3.9+
-- **Apache Kafka** (installed and running locally on default port `9092`)
-- **Redis** (installed and running locally on default port `6379`)
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### Start Kafka (if not running)
-```bash
-# Start Zookeeper
-bin/zookeeper-server-start.sh config/zookeeper.properties
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-# Start Kafka broker
-bin/kafka-server-start.sh config/server.properties
-```
+### Code Splitting
 
-### Start Redis (if not running)
-```bash
-redis-server
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
----
+### Analyzing the Bundle Size
 
-## Running the Project
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### ML Pipeline
-```bash
-cd ml-pipeline
-pip install -r requirements.txt
-python app.py
-```
+### Making a Progressive Web App
 
-### Backend
-```bash
-cd backend
-./mvnw spring-boot:run
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Frontend
-```bash
-cd frontend
-npm install
-npm start
-```
+### Advanced Configuration
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-## Environment Variables
+### Deployment
 
-Each service uses environment variables. Copy `.env.example` to `.env` in the respective folders and fill in your values.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-Key variables:
-- `KAFKA_BOOTSTRAP_SERVERS` — default `localhost:9092`
-- `REDIS_HOST` — default `localhost`
-- `REDIS_PORT` — default `6379`
-- `ML_SERVICE_URL` — URL where the Python service runs
+### `npm run build` fails to minify
 
----
-
-## Project Structure
-```
-sentiment-analysis-system/
-├── frontend/        # React app
-├── backend/         # Spring Boot API
-├── ml-pipeline/     # Python ML service
-└── README.md
-```
-
----
-
-## Author
-
-[saurav-max](https://github.com/saurav-max)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
